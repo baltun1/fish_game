@@ -1,0 +1,305 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqxvn8yqxqxqx"]
+
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_game_manager"]
+[ext_resource type="Script" path="res://scripts/UIManager.gd" id="2_ui_manager"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.2, 0.6, 1, 0.8)
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_game_manager")
+
+[node name="UIManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_ui_manager")
+
+[node name="Background" type="ColorRect" parent="UIManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.3, 0.6, 1)
+
+[node name="MainMenu" type="VBoxContainer" parent="UIManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+
+[node name="Title" type="Label" parent="UIManager/MainMenu"]
+layout_mode = 2
+text = "🐟 Balık Evrim Savaş Oyunu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="UIManager/MainMenu"]
+layout_mode = 2
+text = "Yeni Oyun"
+
+[node name="LoadButton" type="Button" parent="UIManager/MainMenu"]
+layout_mode = 2
+text = "Oyun Yükle"
+
+[node name="SettingsButton" type="Button" parent="UIManager/MainMenu"]
+layout_mode = 2
+text = "Ayarlar"
+
+[node name="QuitButton" type="Button" parent="UIManager/MainMenu"]
+layout_mode = 2
+text = "Çıkış"
+
+[node name="PauseMenu" type="VBoxContainer" parent="UIManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -150.0
+offset_right = 100.0
+offset_bottom = 150.0
+visible = false
+
+[node name="PauseTitle" type="Label" parent="UIManager/PauseMenu"]
+layout_mode = 2
+text = "Oyun Duraklatıldı"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="UIManager/PauseMenu"]
+layout_mode = 2
+text = "Devam Et"
+
+[node name="RestartButton" type="Button" parent="UIManager/PauseMenu"]
+layout_mode = 2
+text = "Yeniden Başlat"
+
+[node name="MainMenuButton" type="Button" parent="UIManager/PauseMenu"]
+layout_mode = 2
+text = "Ana Menü"
+
+[node name="GameOverMenu" type="VBoxContainer" parent="UIManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+visible = false
+
+[node name="GameOverTitle" type="Label" parent="UIManager/GameOverMenu"]
+layout_mode = 2
+text = "Oyun Bitti!"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="UIManager/GameOverMenu"]
+layout_mode = 2
+text = "İstatistikler:"
+horizontal_alignment = 1
+
+[node name="RestartButton2" type="Button" parent="UIManager/GameOverMenu"]
+layout_mode = 2
+text = "Yeniden Başlat"
+
+[node name="MainMenuButton2" type="Button" parent="UIManager/GameOverMenu"]
+layout_mode = 2
+text = "Ana Menü"
+
+[node name="GameUI" type="Control" parent="UIManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+
+[node name="HealthBar" type="ProgressBar" parent="UIManager/GameUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -60.0
+offset_right = 220.0
+offset_bottom = -40.0
+value = 100.0
+
+[node name="LevelLabel" type="Label" parent="UIManager/GameUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -150.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 46.0
+text = "Seviye: 1"
+
+[node name="XPBar" type="ProgressBar" parent="UIManager/GameUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -40.0
+offset_right = 220.0
+offset_bottom = -20.0
+value = 0.0
+
+[node name="AbilityPanel" type="HBoxContainer" parent="UIManager/GameUI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -100.0
+offset_right = 320.0
+offset_bottom = -60.0
+
+[node name="Ability1" type="Button" parent="UIManager/GameUI/AbilityPanel"]
+layout_mode = 2
+text = "Q"
+
+[node name="Cooldown1" type="Label" parent="UIManager/GameUI/AbilityPanel"]
+layout_mode = 2
+text = "0"
+visible = false
+
+[node name="Ability2" type="Button" parent="UIManager/GameUI/AbilityPanel"]
+layout_mode = 2
+text = "E"
+
+[node name="Cooldown2" type="Label" parent="UIManager/GameUI/AbilityPanel"]
+layout_mode = 2
+text = "0"
+visible = false
+
+[node name="Ability3" type="Button" parent="UIManager/GameUI/AbilityPanel"]
+layout_mode = 2
+text = "R"
+
+[node name="Cooldown3" type="Label" parent="UIManager/GameUI/AbilityPanel"]
+layout_mode = 2
+text = "0"
+visible = false
+
+[node name="StatsPanel" type="Panel" parent="UIManager/GameUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 60.0
+offset_right = -20.0
+offset_bottom = 200.0
+
+[node name="AttackLabel" type="Label" parent="UIManager/GameUI/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -120.0
+text = "Saldırı: 8"
+
+[node name="DefenseLabel" type="Label" parent="UIManager/GameUI/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = -10.0
+offset_bottom = -90.0
+text = "Savunma: 3"
+
+[node name="SpeedLabel" type="Label" parent="UIManager/GameUI/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 70.0
+offset_right = -10.0
+offset_bottom = -60.0
+text = "Hız: 120"
+
+[node name="SizeLabel" type="Label" parent="UIManager/GameUI/StatsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 100.0
+offset_right = -10.0
+offset_bottom = -30.0
+text = "Boyut: 0.8"
+
+[node name="ZoneLabel" type="Label" parent="UIManager/GameUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 46.0
+text = "Bölge: Yüzey"
+
+[node name="FishEatenLabel" type="Label" parent="UIManager/GameUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 40.0
+offset_right = -20.0
+offset_bottom = 66.0
+text = "Yenen Balık: 0"
+
+[node name="MessageLabel" type="Label" parent="UIManager/GameUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = -20.0
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+visible = false
+
+[connection signal="pressed" from="UIManager/MainMenu/StartButton" to="UIManager" method="_on_start_button_pressed"]
+[connection signal="pressed" from="UIManager/MainMenu/LoadButton" to="UIManager" method="_on_load_button_pressed"]
+[connection signal="pressed" from="UIManager/MainMenu/SettingsButton" to="UIManager" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="UIManager/MainMenu/QuitButton" to="UIManager" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="UIManager/PauseMenu/ResumeButton" to="UIManager" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="UIManager/PauseMenu/RestartButton" to="UIManager" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UIManager/PauseMenu/MainMenuButton" to="UIManager" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="UIManager/GameOverMenu/RestartButton2" to="UIManager" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="UIManager/GameOverMenu/MainMenuButton2" to="UIManager" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="UIManager/GameUI/AbilityPanel/Ability1" to="UIManager" method="_on_ability_1_pressed"]
+[connection signal="pressed" from="UIManager/GameUI/AbilityPanel/Ability2" to="UIManager" method="_on_ability_2_pressed"]
+[connection signal="pressed" from="UIManager/GameUI/AbilityPanel/Ability3" to="UIManager" method="_on_ability_3_pressed"] 
